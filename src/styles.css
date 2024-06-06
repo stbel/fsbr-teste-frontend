@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import '@angular/material/prebuilt-themes/pink-bluegrey'; /* purple-green, deeppurple-amber',indigo-pink',pink-bluegrey',*/
+
+* {
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    color: rgb(200, 200, 240);
+    background-color: rgb(45, 45, 50);
+}

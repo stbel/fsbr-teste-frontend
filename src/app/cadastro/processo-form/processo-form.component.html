@@ -1,0 +1,51 @@
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="npu"
+        placeholder="Número do processo"
+        mask="0000000-00.0000.0.00.0000"
+        [dropSpecialCharacters]="false"
+      />
+      <mat-error
+        *ngIf="
+          form.get('npu')?.hasError('required') ||
+          form.get('npu')?.hasError('mask')
+        "
+        >Preenchimento obrigatório completo no formato
+        '0000000-00.0000.0.00.0000'</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select
+        formControlName="ibgeUfId"
+        placeholder="Selecione a UF"
+        (selectionChange)="buscarMunicipios()"
+      >
+        <mat-option *ngFor="let uf of ibgeUfs" [value]="uf.id">
+          {{ uf.nome }} - {{ uf.sigla }}</mat-option
+        >
+      </mat-select>
+      <mat-error *ngIf="form.get('ibgeUfId')?.hasError('min')"
+        >Seleção da UF é obrigatória</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select
+        formControlName="ibgeMunicipioId"
+        placeholder="Selecione o município"
+      >
+        <mat-option
+          *ngFor="let municipio of ibgeMunicipios"
+          [value]="municipio.id"
+          >{{ municipio.nome }}</mat-option
+        >
+      </mat-select>
+      <mat-error *ngIf="form.get('ibgeMunicipioId')?.hasError('min')"
+        >Seleção do município é obrigatória</mat-error
+      >
+    </mat-form-field>
+    <button mat-button [disabled]="!form.valid" (click)="salvar()">Salvar</button>
+  </form>
+</mat-card>

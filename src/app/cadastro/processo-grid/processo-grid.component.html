@@ -1,0 +1,47 @@
+<mat-card class="application-card" *ngIf="pagina">
+  <a mat-button routerLink="editar/-1">Cadastrar processo</a>
+  <h1>processo Grid</h1>
+  <mat-table [dataSource]="pagina.content">
+    <!-- NPU -->
+    <ng-container matColumnDef="npu">
+      <mat-header-cell *matHeaderCellDef> NPU </mat-header-cell>
+      <mat-cell *matCellDef="let processo"> {{ processo.npu }} </mat-cell>
+    </ng-container>
+
+    <!-- Data Cadastro -->
+    <ng-container matColumnDef="dataCadastro">
+      <mat-header-cell *matHeaderCellDef> Data de Criação </mat-header-cell>
+      <mat-cell *matCellDef="let processo">
+        {{ processo.dataCadastro }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Data Visualizacao -->
+    <ng-container matColumnDef="dataVisualizacao">
+      <mat-header-cell *matHeaderCellDef> Data de Criação </mat-header-cell>
+      <mat-cell *matCellDef="let processo">
+        {{ processo.dataVisualizacao }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Action -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let processo">
+        <a mat-button [routerLink]="['editar/', processo.id]">Edit</a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+    <mat-row *matRowDef="let processo; columns: colunas"></mat-row>
+  </mat-table>
+  <mat-paginator *ngIf="pagina"
+    showFirstLastButtons
+    [length]="pagina.totalElements"
+    [pageSize]="1"
+    [pageSizeOptions]="[1, 2, 10, 20, 50]"
+    (page)="temp($event)"
+  >
+  </mat-paginator>
+</mat-card>
