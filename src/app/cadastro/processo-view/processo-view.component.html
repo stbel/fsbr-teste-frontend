@@ -1,1 +1,14 @@
-<p>processo-view works!</p>
+<mat-card class="application-card" *ngIf="processo">
+  <mat-card-title>Visualizar {{ processoId }}</mat-card-title>
+  <div style="margin: 2rem 0 0 0">
+    <a mat-button [routerLink]="['/processos']">Voltar para a Grid</a>
+    <a mat-button [href]="urlArquivo()" target="_blank">Baixar Arquivo</a>
+  </div>
+  <div class="process-sheet">
+    Npu: {{ processo.npu }} <br />
+    Município: {{ processo.ibgeMunicipioNome }} <br />
+    Estado: {{ processo.ibgeUfNome }} - {{ processo.ibgeUfSigla }}<br />
+    Data de cadastro: {{ processo.dataCadastro }}<br />
+    Data de visualização: {{ processo.dataVisualizacao }}<br />
+  </div>
+</mat-card>

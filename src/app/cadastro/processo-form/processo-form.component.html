@@ -1,4 +1,6 @@
-<mat-card>
+<mat-card *ngIf="pronto">
+  <mat-card-title *ngIf="processoId === -1">Cadastrar Processo</mat-card-title>
+  <mat-card-title *ngIf="processoId !== -1">Editar Processo</mat-card-title>
   <form [formGroup]="form">
     <mat-form-field>
       <input
@@ -21,7 +23,7 @@
       <mat-select
         formControlName="ibgeUfId"
         placeholder="Selecione a UF"
-        (selectionChange)="buscarMunicipios()"
+        (selectionChange)="cargaMunicipios()"
       >
         <mat-option *ngFor="let uf of ibgeUfs" [value]="uf.id">
           {{ uf.nome }} - {{ uf.sigla }}</mat-option
@@ -46,6 +48,12 @@
         >Seleção do município é obrigatória</mat-error
       >
     </mat-form-field>
-    <button mat-button [disabled]="!form.valid" (click)="salvar()">Salvar</button>
+    <div class="mat-form-field file-upload">
+      <label>
+        <input type="file" formControlName="arquivoPdf" (change)="capturarArquivo($event)" accept="application/pdf" matTooltip="Escolha o arquivo pdf" />
+      </label>
+    </div>
+    <a mat-button [disabled]="!form.valid" (click)="salvar()">Salvar</a>
+    <a mat-button [routerLink]="['/processos']">Voltar para a Grid</a>
   </form>
 </mat-card>

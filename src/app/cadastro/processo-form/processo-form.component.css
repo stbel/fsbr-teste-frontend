@@ -1,9 +1,15 @@
 .mat-card {
     width: 60vw;
     margin: 5rem auto;
+    padding: 3rem;
 }
 
 .mat-form-field {
     display: block;
-    margin: 3rem;
+    margin: 3rem 0;
+}
+
+.mat-card a {
+    border: 1px solid slategray;
+    margin: 0 1rem;
 }

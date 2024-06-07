@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
@@ -23,23 +23,23 @@ export class ProcessoService {
     );
   }
 
-  find(): Observable<PageResponseDTO<ProcessoResponseDTO>> {
-    return this.http.get<PageResponseDTO<ProcessoResponseDTO>>('');
+  find(id: number): Observable<ProcessoResponseDTO> {
+    return this.http.get<ProcessoResponseDTO>(
+      `http://localhost:8080/processos/${id}`
+    );
   }
 
-  create(
-    dto: ProcessoCreateDTO
-  ): Observable<PageResponseDTO<ProcessoResponseDTO>> {
-    return this.http.post<PageResponseDTO<ProcessoResponseDTO>>('', {});
+  create(data: FormData): Observable<ProcessoResponseDTO> {
+    return this.http.post<ProcessoResponseDTO>(
+      'http://localhost:8080/processos',
+      data
+    );
   }
 
-  change(
-    dto: ProcessoChangeDTO
-  ): Observable<PageResponseDTO<ProcessoResponseDTO>> {
-    return this.http.put<PageResponseDTO<ProcessoResponseDTO>>('', {});
-  }
-
-  remove(): Observable<String> {
-    return this.http.delete<String>('');
+  change(id: number, data: FormData): Observable<ProcessoResponseDTO> {
+    return this.http.put<ProcessoResponseDTO>(
+      `http://localhost:8080/processos`,
+      data
+    );
   }
 }

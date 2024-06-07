@@ -1,0 +1,15 @@
+.mat-card {
+    width: 60vw;
+    margin: 5rem auto;
+}
+
+.mat-card a {
+    border: 1px solid slategray;
+    margin: 0 1rem;
+}
+
+.process-sheet {
+    padding: 2rem;
+    line-height: 4rem;
+    font-size: 14pt;
+}

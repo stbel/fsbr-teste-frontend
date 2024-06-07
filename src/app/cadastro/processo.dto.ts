@@ -5,7 +5,13 @@ export class ProcessoResponseDTO {
 
   ibgeMunicipioId!: number;
 
+  ibgeMunicipioNome!: string;
+
   ibgeUfId!: number;
+
+  ibgeUfNome!: string;
+
+  ibgeUfSigla!: string;
 
   dataCadastro!: Date;
 
@@ -18,6 +24,8 @@ export class ProcessoCreateDTO {
   ibgeMunicipioId!: number;
 
   ibgeUfId!: number;
+
+  docPdf!: File;
 }
 
 export class ProcessoChangeDTO {
@@ -28,4 +36,6 @@ export class ProcessoChangeDTO {
   ibgeMunicipioId!: number;
 
   ibgeUfId!: number;
+
+  docPdf!: File;
 }

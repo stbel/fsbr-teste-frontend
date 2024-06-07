@@ -10,7 +10,14 @@ import { PageResponseDTO } from 'src/app/shared/dto/page-response.dto';
   styleUrls: ['./processo-grid.component.css'],
 })
 export class ProcessoGridComponent implements OnInit {
-  colunas = ['npu', 'dataCadastro', 'dataVisualizacao'];
+  colunas = [
+    'npu',
+    'ibgeMunicipio',
+    'ibgeUf',
+    'dataCadastro',
+    'dataVisualizacao',
+    'action',
+  ];
 
   pagina!: PageResponseDTO<ProcessoResponseDTO[]>;
 
@@ -21,7 +28,7 @@ export class ProcessoGridComponent implements OnInit {
   constructor(private readonly service: ProcessoService) {}
 
   ngOnInit(): void {
-    this.carregarProcessos(0, 1);
+    this.carregarProcessos(0, 20);
   }
 
   temp(event: PageEvent): void {
